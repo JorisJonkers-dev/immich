@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# Upstream's entrypoint, less the config it would render into a read-only /etc.
+set -eo pipefail
+# shellcheck source=/dev/null
+. /usr/local/bin/set-env.sh
+exec /usr/local/bin/docker-entrypoint.sh "$@"

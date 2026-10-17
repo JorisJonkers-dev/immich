@@ -1,0 +1,4 @@
+FROM ghcr.io/immich-app/immich-machine-learning:v2.7.5@sha256:a2501141440f10516d329fdfba2c68082e19eb9ba6016c061ac80d23beadf7f3
+
+ENV HOME=/tmp
+USER 1000:1000

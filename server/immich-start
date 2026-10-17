@@ -1,0 +1,8 @@
+#!/bin/sh
+# Builds the machine learning URL from the host and port the estate delivers separately, then
+# starts immich as upstream's start.sh does.
+set -eu
+if [ -n "${IMMICH_ML_HOST:-}" ]; then
+  export IMMICH_MACHINE_LEARNING_URL="http://${IMMICH_ML_HOST}:${IMMICH_ML_PORT:?}"
+fi
+exec start.sh "$@"
