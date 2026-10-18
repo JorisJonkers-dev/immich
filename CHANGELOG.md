@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/JorisJonkers-dev/immich/compare/v1.0.0...v1.0.1) (2026-10-18)
+
+
+### Bug Fixes
+
+* create immich's extensions in template1, so the database the catalog creates has them ([#5](https://github.com/JorisJonkers-dev/immich/issues/5)) ([8ddeddc](https://github.com/JorisJonkers-dev/immich/commit/8ddeddc061cc5aec81f58c04a45f0ec30018d0aa))
+
 ## 1.0.0 (2026-10-17)
 
 
