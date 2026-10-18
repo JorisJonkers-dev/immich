@@ -5,6 +5,7 @@ ENV PGDATA=/var/lib/postgresql/data/pgdata
 RUN cp /var/postgresql-conf-tpl/postgresql.ssd.conf /etc/postgresql/postgresql.conf \
  && sed -i "s@##PGDATA@${PGDATA}@" /etc/postgresql/postgresql.conf
 COPY postgres-start /usr/local/bin/postgres-start
+COPY initdb/ /docker-entrypoint-initdb.d/
 # The user immich's data directory has been owned by since it was created.
 USER 70:70
 ENTRYPOINT ["/usr/local/bin/postgres-start"]

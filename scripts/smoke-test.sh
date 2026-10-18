@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 # Starts every image restricted (its own uid, a read-only root, every capability dropped) beside
-# Valkey: Postgres initialises as uid 70, machine learning answers, and the server migrates and
-# serves with its library writable as deploy (1000:1000).
+# Valkey: Postgres initialises as uid 70 with immich's extensions in template1, machine learning
+# answers, and the server migrates a database it owns but no superuser made for it, and serves
+# with its library writable as deploy (1000:1000).
 # Usage: scripts/smoke-test.sh <server-image> <ml-image> <postgres-image>
 set -euo pipefail
 server_image=$1
@@ -36,10 +37,15 @@ until docker exec smoke-postgres pg_isready -U immich -d immich >/dev/null 2>&1;
 done
 echo "postgres accepts connections as uid 70"
 
+# As the estate's catalog does: a database created from template1, owned by a role that is no
+# superuser, which immich signs in as. Its extensions must already be there.
+docker exec smoke-postgres psql -v ON_ERROR_STOP=1 -U immich -d postgres -q \
+  -c "CREATE ROLE app LOGIN PASSWORD 'smoke-app'" -c "CREATE DATABASE immich_db OWNER app" >/dev/null
+
 docker run -d --name smoke-server "${restricted[@]}" --user 1000:1000 \
   --tmpfs '/data:uid=1000,gid=1000' --tmpfs '/tmp:uid=1000,gid=1000,mode=1777' \
-  -e DB_HOSTNAME=smoke-postgres -e DB_PORT=5432 -e DB_USERNAME=immich -e DB_PASSWORD=smoke \
-  -e DB_DATABASE_NAME=immich -e REDIS_HOSTNAME=smoke-valkey -e REDIS_PORT=6379 \
+  -e DB_HOSTNAME=smoke-postgres -e DB_PORT=5432 -e DB_USERNAME=app -e DB_PASSWORD=smoke-app \
+  -e DB_DATABASE_NAME=immich_db -e REDIS_HOSTNAME=smoke-valkey -e REDIS_PORT=6379 \
   -e IMMICH_ML_HOST=smoke-ml -e IMMICH_ML_PORT=3003 "$server_image" >/dev/null
 
 # probe <container> <url>: polls the url from inside the container until it answers.
