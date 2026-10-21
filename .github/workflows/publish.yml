@@ -19,7 +19,7 @@ permissions: {}
 
 jobs:
   publish-server:
-    uses: JorisJonkers-dev/github-workflows/.github/workflows/container-publish.yml@870429202376dac2e9434746941c54f9a2be605f # v0.33.0
+    uses: JorisJonkers-dev/github-workflows/.github/workflows/container-publish.yml@583993e5865cd5b8761fe52db5843130fb107c51 # v0.34.2
     with:
       image-name: immich-server
       version: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
@@ -31,7 +31,7 @@ jobs:
       packages: write
 
   publish-ml:
-    uses: JorisJonkers-dev/github-workflows/.github/workflows/container-publish.yml@870429202376dac2e9434746941c54f9a2be605f # v0.33.0
+    uses: JorisJonkers-dev/github-workflows/.github/workflows/container-publish.yml@583993e5865cd5b8761fe52db5843130fb107c51 # v0.34.2
     with:
       image-name: immich-ml
       version: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
@@ -43,7 +43,7 @@ jobs:
       packages: write
 
   publish-postgres:
-    uses: JorisJonkers-dev/github-workflows/.github/workflows/container-publish.yml@870429202376dac2e9434746941c54f9a2be605f # v0.33.0
+    uses: JorisJonkers-dev/github-workflows/.github/workflows/container-publish.yml@583993e5865cd5b8761fe52db5843130fb107c51 # v0.34.2
     with:
       image-name: immich-postgres
       version: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
@@ -79,7 +79,7 @@ jobs:
       # The shared step also reads back the software version each image ships.
       - name: lock-images
         id: lock
-        uses: JorisJonkers-dev/github-workflows/actions/resolve-image-lock@870429202376dac2e9434746941c54f9a2be605f # v0.33.0
+        uses: JorisJonkers-dev/github-workflows/actions/resolve-image-lock@583993e5865cd5b8761fe52db5843130fb107c51 # v0.34.2
         with:
           name: immich
           images: |
@@ -94,7 +94,7 @@ jobs:
       contents: read
       packages: write
       id-token: write
-    uses: JorisJonkers-dev/github-workflows/.github/workflows/publish-fragment.yml@d381be9f4e6f86d62899ffefa415746a42f67e94 # v0.28.0
+    uses: JorisJonkers-dev/github-workflows/.github/workflows/publish-fragment.yml@583993e5865cd5b8761fe52db5843130fb107c51 # v0.34.2
     with:
       project-file: deploy/immich.project.yml
       version: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
