@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.0](https://github.com/JorisJonkers-dev/immich/compare/v1.0.1...v1.1.0) (2026-10-21)
+
+
+### Features
+
+* the images lock records each image's upstream version, and an upstream bump releases ([#9](https://github.com/JorisJonkers-dev/immich/issues/9)) ([dc9970b](https://github.com/JorisJonkers-dev/immich/commit/dc9970bd1f5ae20e5fc46748ddb13d7f0b0b0366))
+
 ## [1.0.1](https://github.com/JorisJonkers-dev/immich/compare/v1.0.0...v1.0.1) (2026-10-18)
 
 
