@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/JorisJonkers-dev/immich/compare/v1.1.0...v1.1.1) (2026-10-21)
+
+
+### Bug Fixes
+
+* machine learning starts without gunicorn's control socket, which the read-only root refuses ([#14](https://github.com/JorisJonkers-dev/immich/issues/14)) ([0bbd8c9](https://github.com/JorisJonkers-dev/immich/commit/0bbd8c9f820f3e4dae02bf255069144705c9ff0f)), closes [#13](https://github.com/JorisJonkers-dev/immich/issues/13)
+
 ## [1.1.0](https://github.com/JorisJonkers-dev/immich/compare/v1.0.1...v1.1.0) (2026-10-21)
 
 
