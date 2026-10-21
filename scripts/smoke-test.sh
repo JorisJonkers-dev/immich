@@ -68,6 +68,14 @@ probe() {
   return 1
 }
 probe smoke-ml http://127.0.0.1:3003/ping
+# gunicorn 25 opens a control socket in its working directory, on the read-only root. The thread that
+# fails to open it can hold the log lock while the master forks, and the worker then never boots
+# (#13), so the image turns the socket off and nothing may try it.
+if docker logs smoke-ml 2>&1 | grep -q "Control server error"; then
+  docker logs smoke-ml 2>&1 | tail -20
+  echo "smoke-ml tried to open gunicorn's control socket on the read-only root" >&2
+  exit 1
+fi
 probe smoke-server http://127.0.0.1:2283/api/server/ping
 probe smoke-server http://smoke-ml:3003/ping
 
