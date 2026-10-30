@@ -22,6 +22,12 @@ applications:
         audience: authenticated
         routes:
           - { path: /, match: prefix, process: immich-server, surface: http }
+      # On the LAN, with no sign-in.
+      - name: lan
+        host: immich.jorisjonkers.dev
+        audience: lan
+        routes:
+          - { path: /, match: prefix, process: immich-server, surface: http }
     processes:
       - name: immich-server
         lifecycle: application
