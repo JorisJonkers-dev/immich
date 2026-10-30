@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/JorisJonkers-dev/immich/compare/v1.1.1...v1.2.0) (2026-10-30)
+
+
+### Features
+
+* declare its LAN exposure, so the estate edge renders their routes ([#23](https://github.com/JorisJonkers-dev/immich/issues/23)) ([257a833](https://github.com/JorisJonkers-dev/immich/commit/257a833feec2e0b486d5692a9635e62cf8519cad))
+
 ## [1.1.1](https://github.com/JorisJonkers-dev/immich/compare/v1.1.0...v1.1.1) (2026-10-21)
 
 
