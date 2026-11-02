@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/JorisJonkers-dev/immich/compare/v1.2.0...v1.2.1) (2026-11-02)
+
+
+### Bug Fixes
+
+* **deploy:** reserve what immich-postgres uses ([#26](https://github.com/JorisJonkers-dev/immich/issues/26)) ([8077ee9](https://github.com/JorisJonkers-dev/immich/commit/8077ee936cce9fafd530a278a6047229e012e2aa))
+
 ## [1.2.0](https://github.com/JorisJonkers-dev/immich/compare/v1.1.1...v1.2.0) (2026-10-30)
 
 
