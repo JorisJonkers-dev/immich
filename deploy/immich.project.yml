@@ -97,7 +97,7 @@ applications:
             delivery: env
             rotation: { tolerates: restart }
         placement:
-          memory: 2Gi
+          memory: 768Mi # peaked at 139Mi over 14 days (2026-11-02)
           cpu: 1000m
           disk: { media: [nvme, ssd] } # a database on a card or a spinning disk is too slow
         writablePaths: [/var/run/postgresql, /tmp]
