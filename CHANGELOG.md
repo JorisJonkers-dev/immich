@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.2](https://github.com/JorisJonkers-dev/immich/compare/v1.2.1...v1.2.2) (2026-11-12)
+
+
+### Bug Fixes
+
+* **hygiene:** never cancel a run of the required hygiene checks ([#36](https://github.com/JorisJonkers-dev/immich/issues/36)) ([d0810c0](https://github.com/JorisJonkers-dev/immich/commit/d0810c0886f4bd61195a4f08c4de3c41274711b2))
+
 ## [1.2.1](https://github.com/JorisJonkers-dev/immich/compare/v1.2.0...v1.2.1) (2026-11-02)
 
 
